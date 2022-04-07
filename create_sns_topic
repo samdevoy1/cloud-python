@@ -1,0 +1,19 @@
+import boto3
+
+def create_topic(name):
+    
+    sns = boto3.resource("sns")
+    topic = sns.create_topic(Name = name)
+    return topic
+
+def list_topics():
+    sns = boto3.resource("sns")
+    topics_iter = sns.topics.all()
+    return topics_iter
+    
+
+create_topic("cloud_sns")
+
+for topic in list_topics():
+  print(topic)
+
